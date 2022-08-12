@@ -1,0 +1,152 @@
+{
+  "chapters": [{
+    "name": "Product",
+    "leader": "Beth Smith",
+    "color": "7700FF"
+  }, {
+    "name": "Engineering",
+    "leader": "Rick Sanchez",
+    "color": "0077FF"
+  }, {
+    "name": "Support",
+    "leader": "Birdperson",
+    "color": "388E3C"
+  }, {
+    "name": "PMO",
+    "leader": "Mr. Meeseeks",
+    "color": "FFB300"
+  }],
+  "tribes": [{
+    "name": "Alpha",
+    "squads": [{
+      "name": "Example",
+      "type": "Experience",
+      "members": [{
+        "name": "Mr. Poopybutthole",
+        "role": "Product Owner",
+        "chapter": "Product"
+      }, {
+        "name": "Morty Smith",
+        "role": "Engineering Lead",
+        "chapter": "Engineering"
+      }, {
+        "name": "Jerry Smith",
+        "role": "Support Agent",
+        "chapter": "Support"
+      }, {
+        "name": "Doofus Rick",
+        "role": "Engineer",
+        "chapter": "Engineering",
+        "contractor": true
+      }, {
+        "name": "(TBH:ID_EN1)",
+        "role": "Engineer",
+        "chapter": "Engineering",
+        "vacant": true
+      }, {
+        "name": "Revolio Clockberg",
+        "role": "Agile Coach",
+        "chapter": "PMO"
+      }]
+    }, {
+      "name": "Another",
+      "type": "Experience",
+      "members": [{
+        "name": "Summer Smith",
+        "role": "Product Owner",
+        "chapter": "Product"
+      }, {
+        "name": "Squanchy",
+        "role": "Engineering Lead",
+        "chapter": "Engineering"
+      }, {
+        "name": "(TBH:ID_EN2)",
+        "role": "Engineer",
+        "chapter": "Engineering",
+        "vacant": true
+      }, {
+        "name": "Revolio Clockberg",
+        "role": "Agile Coach",
+        "chapter": "PMO"
+      }, {
+        "name": "Abradolf Lincler",
+        "role": "Support Agent",
+        "chapter": "Support"
+      }]
+    }]
+  }, {
+    "name": "Bravo",
+    "squads": [{
+      "name": "Platform",
+      "type": "Platform",
+      "members": [{
+        "name": "Mr. Goldenfold",
+        "role": "Product Owner",
+        "chapter": "Product"
+      }, {
+        "name": "Toby Matthews",
+        "role": "Engineering Lead",
+        "chapter": "Engineering"
+      }, {
+        "name": "Tammy Gueterman",
+        "role": "Engineer",
+        "chapter": "Engineering"
+      }, {
+        "name": "Tony Taylor",
+        "role": "Engineer",
+        "chapter": "Engineering"
+      }, {
+        "name": "(TBH:ID_PM1)",
+        "role": "Project Manager",
+        "chapter": "PMO",
+        "vacant": true
+      }]
+    }, {
+      "name": "Yet Another",
+      "type": "Experience",
+      "members": [{
+        "name": "Diane Sanchez",
+        "role": "Product Owner",
+        "chapter": "Product"
+      }, {
+        "name": "Naruto Smith",
+        "role": "Engineering Lead",
+        "chapter": "Engineering"
+      }, {
+        "name": "Dr. Wong",
+        "role": "Engineer",
+        "chapter": "Engineering",
+        "future": true
+      }, {
+        "name": "Coach Feratu",
+        "role": "Agile Coach",
+        "chapter": "PMO"
+      }]
+    }, {
+      "name": "One Last",
+      "type": "Experience",
+      "members": [{
+        "name": "Snuffles",
+        "role": "Product Owner",
+        "chapter": "Product"
+      }, {
+        "name": "Tricia Lange",
+        "role": "Support Agent",
+        "chapter": "Support"
+      }, {
+        "name": "Scary Terry",
+        "role": "Engineer",
+        "chapter": "Engineering"
+      }, {
+        "name": "(TBH:ID_EN3)",
+        "role": "Engineer",
+        "chapter": "Engineering",
+        "vacant": true
+      }, {
+        "name": "Bruce Chutback",
+        "role": "Project Manager",
+        "chapter": "PMO"
+      }]
+    }]
+  }]
+}

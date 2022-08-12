@@ -1,0 +1,105 @@
+<div class="toolbar-wrapper">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="app-title">Role Map Explorer</span>
+      <span class="spacer"></span>
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-toolbar-row class="secondary-toolbar">
+    <label>Filters:&nbsp;<span *ngIf="filters.length === 0">(none)</span></label>
+    <mat-chip-list>
+      <mat-chip *ngFor="let filter of filters" (removed)="removeFilter(filter)">
+        {{ getFilterKey(filter) }}: {{ getFilterValue(filter) }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+    <span class="spacer"></span>
+    <span class="total">
+      <label class="count">{{ getAllMembersCount() }}</label>
+    </span>
+    <mat-form-field appearance="outline">
+      <mat-label>Squad Type</mat-label>
+      <mat-select [(value)]="squadTypeFilter">
+        <mat-option value="all">All</mat-option>
+        <mat-option value="Experience">Experience</mat-option>
+        <mat-option value="Platform">Platform</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Vacancy</mat-label>
+      <mat-select [(value)]="vacancyFilter">
+        <mat-option value="all">All</mat-option>
+        <mat-option [value]="true">Vacant</mat-option>
+        <mat-option [value]="false">Filled</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Member Type</mat-label>
+      <mat-select [(value)]="contractorFilter">
+        <mat-option value="all">All</mat-option>
+        <mat-option [value]="false">Employee</mat-option>
+        <mat-option [value]="true">Contractor</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="clearAllFilters()">Reset Filters</button>
+  </mat-toolbar-row>
+</div>
+<main class="map-container">
+  <div class="headings">
+    <div class="chapter-heading"></div>
+    <div class="heading" *ngFor="let tribe of data.tribes" [ngStyle]="getTribeStyles(tribe)">
+      <h2><a href="javascript:void(0);" (click)="addFilter('tribe', tribe.name)">{{ tribe.name }} Tribe</a></h2>
+    </div>
+  </div>
+  <div class="headings">
+    <div class="chapter-heading"></div>
+    <div *ngFor="let tribe of data.tribes" class="tribe" [ngStyle]="getTribeStyles(tribe)">
+      <div class="squad-heading" *ngFor="let squad of tribe.squads">
+        <div class="squad-background">
+          <h3>
+            <a href="javascript:void(0);" (click)="addFilter('squad', squad.name)">{{ squad.name }} Squad</a>
+            <label>{{ squad.type }}</label><br />
+            <label class="count">{{ getSquadMemberCount(squad) }}</label>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let chapter of data.chapters" class="chapter-wrapper">
+    <div class="chapter">
+      <div class="chapter-heading heading-text" [ngStyle]="getChapterStyles(chapter)">
+        <h2><a href="javascript:void(0);" (click)="addFilter('chapter', chapter.name)">{{ chapter.name }} Chapter</a></h2>
+        <em>{{ chapter.leader }}</em>
+        <label class="count">{{ getChapterMemberCount(chapter) }}</label>
+      </div>
+      <div *ngFor="let tribe of data.tribes" class="tribe" [ngStyle]="getTribeStyles(tribe)">
+        <div class="squad" *ngFor="let squad of tribe.squads">
+          <div class="squad-background">
+            <div class="chapter-overlay" [ngStyle]="getChapterStyles(chapter, tribe)">
+              <div class="member" *ngFor="let member of getSquadChapterMembers(squad, chapter.name)" [ngClass]="getMemberClasses(member)">
+                <strong><a href="javascript:void(0);" (click)="addFilter('member', member.name)">{{ member.name }}</a></strong>
+                <em>{{ member.role }}</em>
+                <div class="split" *ngIf="getSplit(member) < 100">
+                  {{ this.getSplit(member) }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- BEGIN ROW SPACER -->
+    <div class="chapter">
+      <div class="chapter-heading spacer"></div>
+      <div *ngFor="let tribe of data.tribes" class="tribe" [ngStyle]="getTribeStyles(tribe)">
+        <div class="squad-heading" *ngFor="let squad of tribe.squads">
+          <div class="squad-background">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+    <!-- END ROW SPACER -->
+  </div>
+</main>

@@ -1,0 +1,147 @@
+{
+  "id": "http://lukiffer.dev/schemas/spotify-role-map.json#",
+  "title": "Role Map Explorer Data Schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/RoleMap",
+  "definitions": {
+    "RoleMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chapters": {
+          "type": "array",
+          "description": "A list of chapters to include in the map.",
+          "items": {
+            "$ref": "#/definitions/Chapter"
+          }
+        },
+        "tribes": {
+          "type": "array",
+          "description": "A list of tribes (and nested squads and members) to include in the map.",
+          "items": {
+            "$ref": "#/definitions/Tribe"
+          }
+        }
+      },
+      "required": [
+        "chapters",
+        "tribes"
+      ],
+      "title": "Role Map"
+    },
+    "Chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the chapter. (Will be suffixed with \"Chapter\")."
+        },
+        "leader": {
+          "type": "string",
+          "description": "The name of the person or committee that governs this chapter."
+        },
+        "color": {
+          "type": "string",
+          "pattern": "[0-9A-Fa-f]{6}",
+          "description": "A hexadecimal RGB color code for this chapter (excluding any leading `#`)."
+        }
+      },
+      "required": [
+        "name",
+        "leader",
+        "color"
+      ],
+      "title": "Chapter"
+    },
+    "Tribe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the tribe. (Will be suffixed with \"Tribe\")."
+        },
+        "squads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Squad"
+          },
+          "description": "A list of squads that comprise this tribe."
+        }
+      },
+      "required": [
+        "name",
+        "squads"
+      ],
+      "title": "Tribe"
+    },
+    "Squad": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the squad. (Will be suffixed with \"Squad\")."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Platform",
+            "Experience"
+          ],
+          "description": "The type of squad (either `Platform` or `Experience`)."
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Member"
+          },
+          "description": "A list of squad members."
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "members"
+      ],
+      "title": "Squad"
+    },
+    "Member": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the member."
+        },
+        "role": {
+          "type": "string",
+          "description": "This member's role in the squad."
+        },
+        "chapter": {
+          "type": "string",
+          "description": "The chapter to which this member belongs in the context of this squad. This value should correspond to the name of a chapter defined in the `Chapters` key of the root object."
+        },
+        "vacant": {
+          "type": "boolean",
+          "description": "Whether this position is currently vacant (`true`) or filled (`false`). You may omit this property and `false` is assumed."
+        },
+        "future": {
+          "type": "boolean",
+          "description": "Whether this is a current (`false`) or future (`true`) occupation. You may omit this property and `false` is assumed."
+        },
+        "contractor": {
+          "type": "boolean",
+          "description": "Whether this member is a contractor (`true`) or an employee (`false`). You may omit this property and `false` is assumed."
+        }
+      },
+      "required": [
+        "name",
+        "role",
+        "chapter"
+      ],
+      "title": "Member"
+    }
+  }
+}

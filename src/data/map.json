@@ -90,7 +90,8 @@
       }, {
         "name": "Tammy Gueterman",
         "role": "Engineer",
-        "chapter": "Engineering"
+        "chapter": "Engineering",
+        "review": true
       }, {
         "name": "Tony Taylor",
         "role": "Engineer",

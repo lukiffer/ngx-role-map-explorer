@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
       vacant: !!member.vacant,
       future: !!member.future,
       contractor: !!member.contractor,
+      review: !!member.review,
       split: this.getSplit(member) < 100,
       transitional: !!member.transitional,
     };

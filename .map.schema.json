@@ -134,6 +134,10 @@
         "contractor": {
           "type": "boolean",
           "description": "Whether this member is a contractor (`true`) or an employee (`false`). You may omit this property and `false` is assumed."
+        },
+        "review": {
+          "type": "boolean",
+          "description": "Whether or not this member is flagged for review."
         }
       },
       "required": [

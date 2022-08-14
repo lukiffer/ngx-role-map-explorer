@@ -103,6 +103,7 @@ h2, h3 {
   & > h2 > a {
     text-decoration: none;
     color: #000;
+    font-weight: bold;
 
     &:hover {
       text-decoration: underline;
@@ -229,6 +230,11 @@ h2, h3 {
   &.future {
     background-color: rgba(255, 255, 255, 0.5);
     color: rgba(0, 0, 0, 0.5);
+  }
+
+  &.review {
+    background-color: #ffc;
+    border-color: #fc0;
   }
 
   &.vacant.future {

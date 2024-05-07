@@ -78,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-role-map-explorer:build:production"
+              "buildTarget": "ngx-role-map-explorer:build:production"
             },
             "development": {
-              "browserTarget": "ngx-role-map-explorer:build:development"
+              "buildTarget": "ngx-role-map-explorer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-role-map-explorer:build"
+            "buildTarget": "ngx-role-map-explorer:build"
           }
         },
         "test": {
@@ -114,5 +114,7 @@
       }
     }
   },
-  "defaultProject": "ngx-role-map-explorer"
+  "cli": {
+    "analytics": false
+  }
 }

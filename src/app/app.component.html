@@ -8,14 +8,14 @@
   </mat-toolbar>
   <mat-toolbar-row class="secondary-toolbar">
     <label>Filters:&nbsp;<span *ngIf="filters.length === 0">(none)</span></label>
-    <mat-chip-list>
+    <mat-chip-listbox>
       <mat-chip *ngFor="let filter of filters" (removed)="removeFilter(filter)">
         {{ getFilterKey(filter) }}: {{ getFilterValue(filter) }}
         <button matChipRemove>
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>
-    </mat-chip-list>
+    </mat-chip-listbox>
     <span class="spacer"></span>
     <span class="total">
       <label class="count">{{ getAllMembersCount() }}</label>
